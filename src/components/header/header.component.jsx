@@ -12,10 +12,10 @@ function Header() {
         {
           TAB_DATA.map((tab) => {
             return (
-              <div label={tab.title}>
+              <div label={ tab.title }>
                 <div className="content">
                   <div className="content-catelog">Catelog</div>
-                  <div className="content-title">Korean Products</div>
+                  <div className="content-title">{ tab.title }</div>
                   <div className="grid">
                       {
                         tab.products.map(product => (
