@@ -1,0 +1,43 @@
+.tab-list {
+  border-bottom: 1px solid #ccc;
+  padding-left: 0;
+  margin-top: 0;
+  border-top: 0;
+
+  display:'flex';
+  justify-content: space-around;
+}
+
+.tab-list-item {
+  display: inline-block;
+  list-style: none;
+  margin-bottom: -1px;
+  padding: 1rem 2.5rem;
+  border: 0;
+  cursor: pointer;
+}
+
+.tab-list-active {
+  background-color: white;
+  border: solid #ccc;
+  border-width: 5px 1px 0 1px;
+  border-top-color: #4589FF;
+  color: #4589FF;
+  font-weight: bold;
+}
+
+.logo {
+  list-style: none;
+  /* float: right; */
+  /* border:1px solid red; */
+  display: inline-block;  
+  font-size: initial;
+  /* IE 7 hack */
+  *zoom:1;
+  *display: inline;
+  /* vertical-align: middle;
+  text-align: center; */
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 3%;
+}

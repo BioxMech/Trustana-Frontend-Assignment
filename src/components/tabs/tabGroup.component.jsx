@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 import Tab from './tab.component';
+import './tab.css';
 import Logo from '../../assets/logo.svg';
 
 class TabGroup extends Component {
