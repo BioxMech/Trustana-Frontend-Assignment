@@ -8,7 +8,7 @@ import TAB_DATA from './tab.data';
 
 const GET_LAUNCHES = gql`
   {
-    launchesPast(limit: 10) {
+    launchesPast {
       mission_name
       launch_site {
         site_name_long
@@ -38,7 +38,7 @@ function Header() {
   if (data) {
     data.launchesPast.map((launch) => {
       const found = launch.launch_site.site_name_long in launches;
-      if (found) {
+      if (found && launches[launch.launch_site.site_name_long].launch_site_arr.length < 10) {
         launches[launch.launch_site.site_name_long].launch_site_arr.push(launch)
       }
       return null;
