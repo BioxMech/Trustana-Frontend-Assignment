@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ApolloClient from 'apollo-boost';
+import { ApolloProvider } from 'react-apollo-hooks';
+
+const client = new ApolloClient({
+  uri: "https://api.spacex.land/graphql"
+});
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Suspense fallback={<p>Loading...</p>}>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </Suspense>,
   document.getElementById('root')
 );
 
