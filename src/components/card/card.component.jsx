@@ -44,7 +44,7 @@ function Card({ launch_site }) {
                   <div className="card-title">{ mission_name }</div>
                   <div className="card-details">
                     <p><span className="card-details-title">Rocket Name:</span> <br /> { rocket.rocket_name }</p>
-                    <p><span className="card-details-title">Launched On:</span> <br/> { new Date(launch_date_unix).toString() } </p>
+                    <p><span className="card-details-title">Launched On:</span> <br/> { new Date(launch_date_unix * 1000).toString() } </p>
                   </div>
                 </div>
               </div>
