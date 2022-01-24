@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { gql } from 'apollo-boost';
 import { useQuery } from 'react-apollo-hooks';
 
@@ -37,7 +37,7 @@ function Header() {
   if (data) {
     data.launchesPast.map((launch) => {
       const found = launch.launch_site.site_name_long in launches;
-      if (found && launches[launch.launch_site.site_name_long].launch_site_arr.length < 10) {
+      if (found) {
         launches[launch.launch_site.site_name_long].launch_site_arr.push(launch)
       }
       return null;
@@ -59,9 +59,7 @@ function Header() {
                   <div className="content">
                     <div className="content-catelog">Past Space X Launches</div>
                     <div className="content-title">{ site_name }</div>
-                    <div className="grid">
-                      <Card launches_site_name = {launches[site_name]} />
-                    </div>
+                    <Card launches_site_name = {launches[site_name]} />
                   </div>
                 </div>
               )

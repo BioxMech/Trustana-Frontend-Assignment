@@ -28,15 +28,11 @@
 
 .logo {
   list-style: none;
-  /* float: right; */
-  /* border:1px solid red; */
   display: inline-block;  
   font-size: initial;
   /* IE 7 hack */
   *zoom:1;
   *display: inline;
-  /* vertical-align: middle;
-  text-align: center; */
   margin-top: auto;
   margin-bottom: auto;
   margin-right: 3%;
