@@ -59,7 +59,7 @@ function Header() {
                   <div className="content">
                     <div className="content-catelog">Past Space X Launches</div>
                     <div className="content-title">{ site_name }</div>
-                    <Card launches_site_name = {launches[site_name]} />
+                    <Card launch_site = {launches[site_name]} key={ site_name } />
                   </div>
                 </div>
               )

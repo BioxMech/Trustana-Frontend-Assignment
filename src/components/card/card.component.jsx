@@ -1,24 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Pagination from '../pagination/pagination.component';
 
-function Card({ launches_site_name }) {
+function Card({ launch_site }) {
 
-  const totalLaunchesOnSite = launches_site_name.launch_site_arr;
+  const totalLaunchesOnSite = launch_site.launch_site_arr;
 
-  const [launches] = useState(totalLaunchesOnSite);
+  const [allLaunches] = useState(totalLaunchesOnSite);
   const [currentPage, setCurrentPage] = useState(1);
   const [launchesPerPage] = useState(10);
+  const [loading, setLoading] = useState(true);
+  
+  // Get saved page number
+  useEffect(() => {
+    setLoading(true);
+    if (localStorage.getItem(launch_site.tab_name)) {
+      setCurrentPage(parseInt(localStorage.getItem(launch_site.tab_name)));
+    } 
+    setLoading(false);
+  }, [])
 
   // Get current launches
   const indexOfLastLaunch = currentPage * launchesPerPage;
   const indexOfFirstLaunch = indexOfLastLaunch - launchesPerPage;
-  const currentLaunch = launches.slice(indexOfFirstLaunch, indexOfLastLaunch);
+  const currentLaunch = allLaunches.slice(indexOfFirstLaunch, indexOfLastLaunch);
 
   // Change page
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    localStorage.setItem(launch_site.tab_name, pageNumber)
   }
 
   return (
@@ -41,7 +52,17 @@ function Card({ launches_site_name }) {
           ))
         }
       </div>
-      <Pagination launchesPerPage={launchesPerPage} totalLaunches={totalLaunchesOnSite.length} paginate={paginate} currentPage={currentPage} />
+      {
+        loading ? 
+          null
+        :
+          <Pagination 
+            launchesPerPage={launchesPerPage} 
+            totalLaunches={totalLaunchesOnSite.length} 
+            paginate={paginate} 
+            currentPage={currentPage} 
+          />
+      }
     </>
   )
 }
